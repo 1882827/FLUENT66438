@@ -1,53 +1,3 @@
-
-
--- Define the whitelist of User IDs
-local whitelist = {
-    7404802184, 3219789093, 4990801456, 3380703051, 1240860265,
-    2821207193, 3211853358, 4488667209, 2494574929, 1891233823,
-    8062000685, 3818320344, 5073104640, 7838102998 
-}
-
-local player = game.Players.LocalPlayer
-local playerId = player.UserId
-
-print("👤 Player ID detected:", playerId)
-
--- Function to check if the player is whitelisted
-local function isPlayerWhitelisted(playerId)
-    for _, id in ipairs(whitelist) do
-        if id == playerId then
-            return true
-        end
-    end
-    return false
-end
-
--- Check if the player is whitelisted
-if not isPlayerWhitelisted(playerId) then
-    warn("❌ Access denied for ID:", playerId)
-    player:Kick("🚫 You are not allowed to use this script.")
-    return
-end
-
-print("✅ ID " .. playerId .. " allowed. Loading the script...")
-
--- Function to safely load a script from a URL
-local function safeLoad(url, name)
-    print("🔄 Loading: " .. name)
-    local success, result = pcall(function()
-        return loadstring(game:HttpGet(url))()
-    end)
-
-    if not success then
-        warn("❌ Loading Failed: " .. name .. " - " .. tostring(result))
-        return nil
-    end
-
-    print("✅ " .. name .. " Successfully Loaded!")
-    return result
-end
-
--- URL of the main script to load
 local mainScriptUrl = "https://raw.githubusercontent.com/SLHhub/Yamskrtt/refs/heads/main/TRYHARDERKIDDD" -- Ensure this URL is correct
 
 -- Attempt to load the main script
@@ -2317,4 +2267,5 @@ for _, rock in ipairs(rockToggles) do
 end
 
 -- Show UI
+
 Window:SelectTab(1)
